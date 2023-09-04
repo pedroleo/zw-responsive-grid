@@ -1,0 +1,152 @@
+@import "_var";
+
+/* Skin */
+table.zw-rgrid {
+  border-spacing: 0;
+
+  th, td {
+    padding: .5em;
+  }
+
+  thead {
+    th {
+      border-bottom: 3px solid #000;
+    }
+  }
+
+  tfoot {
+    tr {
+      td {
+        border-top: solid 3px #000
+      }
+    }
+  }
+}
+
+/* Skin */
+
+.zw-header-mobile {
+  display: none;
+}
+
+// Mobile
+@media only screen and (max-width: @mediaQuery_tablets) {
+  /**
+   * Tabela responsiva
+   * Obra de arte!!!!
+  */
+  // Elementos para blockLevel
+  table.zw-rgrid {
+    display: block;
+
+    thead, tbody, tfoot, th, td, tr {
+      display: block;
+    }
+
+    //Esconde thead
+    thead {
+      display: none;
+    }
+
+    tbody, tfoot {
+      tr {
+
+        td {
+
+          &.zw-rgrid-detail {
+            max-height: 200px;
+            padding: 2px 10px !important;
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.3s ease;
+            padding: 0 10px !important;
+            border-bottom: none;
+          }
+
+        }
+
+        &.expanded {
+          td {
+            &:after {
+              transform: rotate(180deg);
+            }
+
+            &.zw-rgrid-detail {
+
+              max-height: 200px;
+              padding: 5px 10px !important;
+            }
+          }
+        }
+
+
+        td {
+          &[data-th] {
+            display: flex;
+
+            &:before {
+              display: inline-block;
+              top: 0;
+              padding-left: 1em;
+              padding-right: 10px;
+              vertical-align: top;
+              font-weight: bold;
+              flex-shrink: 0;
+              content: attr(data-th);
+              text-align: right;
+              width: 80px;
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+
+      tr {
+        margin: 0 0 1rem 0;
+        border: solid 1px #e0e0e0;
+
+        td {
+          border-bottom: 1px solid #eee;
+          width: unset !important;
+          text-align: left !important;
+
+          &[data-th] {
+            display: flex;
+
+            &:before {
+              display: inline-block;
+              top: 0;
+              padding-left: 1em;
+              padding-right: 10px;
+              vertical-align: top;
+              font-weight: bold;
+              flex-shrink: 0;
+              content: attr(data-th);
+              text-align: right;
+            }
+          }
+
+          &.zw-header-mobile {
+            background-color: lighten(@corCinza, 50%);
+            text-align: center !important;
+            border-bottom: solid 3px @corCinza;
+
+            &:after {
+              content: "\f078";
+              font-family: FontAwesome;
+              float: right;
+              transition: all .3s ease;
+            }
+
+          }
+
+        }
+      }
+    }
+  }
+  
+}
+
+
