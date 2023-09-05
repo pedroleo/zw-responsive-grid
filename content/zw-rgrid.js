@@ -1,5 +1,4 @@
 /**
- * Tabela de resultado de voos.
  *
  * Controla a funcionalidade de abrir/fechar
  * dos detalhes dos vôos adicionando ".expanded"
@@ -8,6 +7,13 @@
  * Escopo: mobile.
  */
 
-$(document).on('click', '.zw-rgrid .zw-header-mobile', function () {
-    $(this).parent().toggleClass("expanded");
-})
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll(".zw-rgrid-header-mobile").forEach(function (item, index) {
+        item.addEventListener("click", function () {
+            this.closest('tr').classList.toggle("expanded");
+        })
+    });
+
+}, false);
