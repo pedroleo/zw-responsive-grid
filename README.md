@@ -1,5 +1,5 @@
 # zw-responsive-grid
 
-Grid resposiva com css e um mínimo de javascript
+Responsive HTML grid with a bit of css and almost none vanilla JS. No Jquery.
 
-exemplo: http://zonaweb.com.br/rgrid
+Examples and documentations: http://zonaweb.com.br/rgrid
