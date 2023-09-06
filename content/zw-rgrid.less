@@ -48,25 +48,14 @@ table.zw-rgrid {
       display: none;
     }
 
-    tbody, tfoot {
+    tbody {
+
       tr {
-
-        td {
-
-          &.zw-rgrid-detail {
-            max-height: 200px;
-            padding: 2px 10px !important;
-            overflow: hidden;
-            max-height: 0;
-            transition: all 0.3s ease;
-            padding: 0 10px !important;
-            border-bottom: none;
-          }
-
-        }
+        margin: 0 0 0 0;
+        border: solid 1px #e0e0e0;
+        background-color: #FFF;
 
         &.expanded {
-          background-color: #FFF;
 
           td {
             &:after {
@@ -74,40 +63,12 @@ table.zw-rgrid {
             }
 
             &.zw-rgrid-detail {
-
               max-height: 200px;
               padding: 5px 10px !important;
+              border-bottom-style: solid;
             }
           }
         }
-
-
-        td {
-          &[data-th] {
-            display: flex;
-
-            &:before {
-              display: inline-block;
-              top: 0;
-              padding-left: 1em;
-              padding-right: 10px;
-              vertical-align: top;
-              font-weight: bold;
-              flex-shrink: 0;
-              content: attr(data-th);
-              text-align: right;
-              width: 90px;
-            }
-          }
-        }
-      }
-    }
-
-    tbody {
-
-      tr {
-        margin: 0 0 -3px 0;
-        border: solid 1px #e0e0e0;
 
         td {
           border-bottom: 1px solid #eee;
@@ -116,23 +77,29 @@ table.zw-rgrid {
 
           &[data-th] {
             display: flex;
+            justify-content: space-between;
 
             &:before {
               display: inline-block;
               top: 0;
-              padding-left: 1em;
-              padding-right: 10px;
+              padding-right: 5px;
               vertical-align: top;
               font-weight: bold;
               flex-shrink: 0;
               content: attr(data-th);
-              text-align: right;
             }
+          }
+
+          &.zw-rgrid-detail {
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.3s ease;
+            padding: 0 10px !important;
+            border-style: none;
           }
 
           &.zw-rgrid-header-mobile {
             background-color: lighten(@corCinza, 50%);
-            text-align: center !important;
             border-bottom: solid 3px @corCinza;
 
             &:after {
