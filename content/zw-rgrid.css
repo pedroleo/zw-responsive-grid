@@ -21,16 +21,9 @@ table.zw-rgrid tfoot tr td {
    * Tabela responsiva
    * Obra de arte!!!!
   */
-  table.zw-rgrid {
-    display: block;
-  }
-  table.zw-rgrid thead,
-  table.zw-rgrid tbody,
-  table.zw-rgrid tfoot,
-  table.zw-rgrid th,
-  table.zw-rgrid td,
-  table.zw-rgrid tr {
-    display: block;
+  table.zw-rgrid td {
+    display: flex;
+    justify-content: space-between;
   }
   table.zw-rgrid thead {
     display: none;
