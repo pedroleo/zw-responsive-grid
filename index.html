@@ -5,9 +5,9 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
   <title>ZW Responsive Grid</title>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="content/zw-rgrid.css" rel="stylesheet">
+	<link href="dist/zw-rgrid.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
-	<script src="content/zw-rgrid.js" type="text/javascript"></script>
+	<script src="zw-rgrid.js" type="text/javascript"></script>
 </head>
 
 <style>
@@ -51,258 +51,226 @@
 </code>
 </pre>
 
-<p>For the mobile header table, add a td, inside tbody, with "zw-rgrid-header-mobile" css class. This header won`t be show on non mobile viewports. We suggest to use concatenated data used as PK when possible.</p>
+<p>For the mobile header table, add at least a data-pk attribute in one of the table headers, This will create a td, as first-child inside each tbody table row. This ts won`t shown on non mobile viewports. The text of this mobile table header, is the concatenartion of all innertext of data-pk attributes</p>
 <pre>
 <code data-lang="html">
 &lt;tr&gt;
-  &lt;td <span style="font-weight: bold; color: #bf002d">class="zw-rgrid-header-mobile"</span>&gt;Fiat Palio Fiat Palio 1.0L Manual&lt;/td&gt;
+  &lt;th <span style="font-weight: bold; color: #bf002d">data-pk="true"</span>&gt;Brand&lt;/th&gt;
   &lt;td&gt;&lt;/td&gt;
   ...
 &lt;/tr&gt;
 </code>
 </pre>
-<p>To move column tables to expanded area in mobile viewport, you must include "zw-rgrid-detail" as class attribute of TD</p>
+<p>To move column tables to expanded area in mobile viewport, you must include data-hide attribute in all th desired</p>
 <pre>
 <code data-lang="html">
 &lt;tr&gt;
-  &lt;td class="zw-rgrid-header-mobile"&gt;Fiat Palio Fiat Palio 1.0L Manual&lt;/td&gt;
-  &lt;td <span style="font-weight: bold; color: #bf002d">class="zw-rgrid-detail"</span>&gt;Fiat&lt;/td&gt;
+  &lt;th <span style="font-weight: bold; color: #bf002d">data-hide="true"</span> data-pk="true"&gt;Brand&lt;/th&gt;
   ...
 &lt;/tr&gt;
 </code>
 </pre>
-<p>All table columns, must have data-th with the text inside each column title. This value is shown as a label, and we strongly suggest that you use the same value as the column title text. This will be changed, and it`ll be part of js.</p>
-<pre>
-<code data-lang="html">
-&lt;tr&gt;
-  &lt;td class="zw-rgrid-header-mobile"&gt;Fiat Palio 1.0L Manual&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Brand"</span>&gt;Fiat&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Model"</span>&gt;Palio&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Year"</span>&gt;2023&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Price"</span>&gt;R$ 70.000,00&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Engine"</span>&gt;1.0L&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Doors"</span>&gt;4&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Cubic capacity"</span>&gt;1.0L&lt;/td&gt;
-  &lt;td class="zw-rgrid-detail" <span style="font-weight: bold; color: #bf002d">data-th="Gear"</span>&gt;Manual&lt;/td&gt;
-&lt;/tr&gt;
-</code>
-</pre>
-<p>You can hide all the columns content to the expandable area, as the example bellow. Or you can fix some columns to be always visible. To make some columns fixed, just don`t put "zw-rgrid-detail" to that column. It`s better that fixed columns stay on the end of table, otherwise a weird behavior is shown. Here is where we use Vanilla JS, to control show/hide detailed data.</p>
+<p>You can hide all the columns content to the expandable area, as the example bellow. Or you can fix some columns to be always visible. To make some columns fixed, just don`t use data-hide in that column. It`s better that fixed columns stay on the end of table, otherwise a weird behavior is shown. Here is where we use Vanilla JS, to control show/hide detailed data.</p>
 
 <h3>All detail in expandable area</h3>
-<table class="zw-rgrid" style="width: 100%; text-align: left">
+<table class="zw-rgrid" id="table-example-1" style="width: 100%; text-align: left">
   <thead>
+
     <tr>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Price</th>
-      <th>Engine</th>
-      <th>Doors</th>
-      <th>Cubic capacity</th>
-      <th>Gear</th>
+      <th data-hide="true" data-pk="true">Brand</th>
+      <th data-hide="true" data-pk="true">Model</th>
+      <th data-hide="true">Year</th>
+      <th data-hide="true">Price</th>
+      <th data-hide="true">Engine</th>
+      <th data-hide="true">Doors</th>
+      <th data-hide="true">Cubic capacity</th>
+      <th data-hide="true" data-pk="true">Gear</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Palio 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Palio</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 70.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Palio</td>
+      	<td>2023</td>
+      	<td>R$ 70.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Gol 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Gol</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 75.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Volkswagen</td>
+      	<td>Gol</td>
+      	<td>2023</td>
+      	<td>R$ 75.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Chevrolet Onix 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Chevrolet</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Onix</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 80.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Chevrolet</td>
+      	<td>Onix</td>
+      	<td>2023</td>
+      	<td>R$ 80.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Strada 1.4L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Strada</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 90.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.4L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.4L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Strada</td>
+      	<td>2023</td>
+      	<td>R$ 90.000,00</td>
+      	<td>1.4L</td>
+      	<td>4</td>
+      	<td>1.4L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Gol 1.0L Automático</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Gol</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 85.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Automático</td>
+      	<td>Volkswagen</td>
+      	<td>Gol</td>
+      	<td>2023</td>
+      	<td>R$ 85.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Automático</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Chevrolet Onix 1.0L Automático</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Chevrolet</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Onix</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 95.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Automático</td>
+      	<td>Chevrolet</td>
+      	<td>Onix</td>
+      	<td>2023</td>
+      	<td>R$ 95.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Automático</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Argo 1.3L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Argo</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 100.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Argo</td>
+      	<td>2023</td>
+      	<td>R$ 100.000,00</td>
+      	<td>1.3L</td>
+      	<td>4</td>
+      	<td>1.3L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Polo 1.3L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Volkswagen Polo</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 105.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Gear">Manual</td>
+      	<td>Volkswagen</td>
+      	<td>Volkswagen Polo</td>
+      	<td>2023</td>
+      	<td>R$ 105.000,00</td>
+      	<td>1.3L</td>
+      	<td>4</td>
+      	<td>1.3L</td>
+      	<td>Manual</td>
     </tr>
   </tbody>
 </table>
 
 <h3>Last column fixed</h3>
-<table class="zw-rgrid" style="width: 100%; text-align: left">
+<table class="zw-rgrid" id="table-example-2" style="width: 100%; text-align: left">
   <thead>
     <tr>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Price</th>
-      <th>Engine</th>
-      <th>Doors</th>
-      <th>Cubic capacity</th>
+      <th data-hide="true" data-pk="true">Brand</th>
+      <th data-hide="true" data-pk="true">Model</th>
+      <th data-hide="true">Year</th>
+      <th data-hide="true">Price</th>
+      <th data-hide="true">Engine</th>
+      <th data-hide="true">Doors</th>
+      <th data-hide="true">Cubic capacity</th>
       <th>Gear</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Palio 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Palio</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 70.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Palio</td>
+      	<td>2023</td>
+      	<td>R$ 70.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Gol 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Gol</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 75.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Volkswagen</td>
+      	<td>Gol</td>
+      	<td>2023</td>
+      	<td>R$ 75.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Chevrolet Onix 1.0L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Chevrolet</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Onix</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 80.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Chevrolet</td>
+      	<td>Onix</td>
+      	<td>2023</td>
+      	<td>R$ 80.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Strada 1.4L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Strada</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 90.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.4L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.4L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Strada</td>
+      	<td>2023</td>
+      	<td>R$ 90.000,00</td>
+      	<td>1.4L</td>
+      	<td>4</td>
+      	<td>1.4L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Gol 1.0L Automático</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Gol</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 85.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td data-th="Gear">Automático</td>
+      	<td>Volkswagen</td>
+      	<td>Gol</td>
+      	<td>2023</td>
+      	<td>R$ 85.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Automático</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Chevrolet Onix 1.0L Automático</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Chevrolet</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Onix</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 95.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.0L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.0L</td>
-      	<td data-th="Gear">Automático</td>
+      	<td>Chevrolet</td>
+      	<td>Onix</td>
+      	<td>2023</td>
+      	<td>R$ 95.000,00</td>
+      	<td>1.0L</td>
+      	<td>4</td>
+      	<td>1.0L</td>
+      	<td>Automático</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Fiat Argo 1.3L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Fiat</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Argo</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 100.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.3L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Fiat</td>
+      	<td>Argo</td>
+      	<td>2023</td>
+      	<td>R$ 100.000,00</td>
+      	<td>1.3L</td>
+      	<td>4</td>
+      	<td>1.3L</td>
+      	<td>Manual</td>
     </tr>
     <tr>
-		<td class="zw-rgrid-header-mobile">Volkswagen Polo 1.3L Manual</td>
-      	<td class="zw-rgrid-detail" data-th="Brand">Volkswagen</td>
-      	<td class="zw-rgrid-detail" data-th="Model">Volkswagen Polo</td>
-      	<td class="zw-rgrid-detail" data-th="Year">2023</td>
-      	<td class="zw-rgrid-detail" data-th="Price">R$ 105.000,00</td>
-      	<td class="zw-rgrid-detail" data-th="Engine">1.3L</td>
-      	<td class="zw-rgrid-detail" data-th="Doors">4</td>
-      	<td class="zw-rgrid-detail" data-th="Cubic capacity">1.3L</td>
-      	<td data-th="Gear">Manual</td>
+      	<td>Volkswagen</td>
+      	<td>Volkswagen Polo</td>
+      	<td>2023</td>
+      	<td>R$ 105.000,00</td>
+      	<td>1.3L</td>
+      	<td>4</td>
+      	<td>1.3L</td>
+      	<td>Manual</td>
     </tr>
   </tbody>
 </table>
 
 <h3>No content hidden</h3>
-<table class="zw-rgrid" style="width: 100%; text-align: left">
+<table class="zw-rgrid" id="table-example-3" style="width: 100%; text-align: left">
   <thead>
     <tr>
       <th>Brand</th>

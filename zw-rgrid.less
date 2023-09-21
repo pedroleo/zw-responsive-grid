@@ -38,17 +38,15 @@ table.zw-rgrid {
   // Elementos para blockLevel
   table.zw-rgrid {
 
-    td {
-      display: flex;
-      justify-content: space-between;
-    }
-
     //Esconde thead
-    thead {
+    > thead tr th {
       display: none;
     }
 
-    tbody {
+    > tbody {
+      display: flex;
+      flex-direction: column;
+      grid-gap: .3em;
 
       tr {
         margin: 0 0 0 0;
@@ -71,6 +69,8 @@ table.zw-rgrid {
         }
 
         td {
+          display: flex;
+          justify-content: space-between;
           border-bottom: 1px solid #eee;
           width: unset !important;
           text-align: left !important;
@@ -104,7 +104,7 @@ table.zw-rgrid {
 
             &:after {
               content: "\f078";
-              font-family: FontAwesome;
+              font-family: FontAwesome, fantasy;
               float: right;
               transition: all .3s ease;
             }
