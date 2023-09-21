@@ -68,3 +68,4 @@ function setAttributesAndClasses(_a) {
 function toggleExpanded(element) {
     element.closest('tr').classList.toggle("expanded");
 }
+//# sourceMappingURL=zw-rgrid.js.map
