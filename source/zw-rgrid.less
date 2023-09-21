@@ -1,26 +1,39 @@
 @import "_var";
 
-/* Skin */
+/* Skin examaple on desktop */
+
+@padding-td-th: .5em;
 table.zw-rgrid {
   border-spacing: 0;
 
-  > thead, > tbody, > tfoot {
-    > th, > td {
-      padding: .5em;
+  width: 100%;
+  text-align: left;
+  border: solid 1px #c9c9c9;
+  padding: 1em;
+  background-color: aliceblue;
+
+  > thead {
+    > tr {
+      > th {
+        border-bottom: 3px solid #000;
+        padding: @padding-td-th;
+      }
     }
   }
 
-
-  > thead {
-    > th {
-      border-bottom: 3px solid #000;
+  > tbody {
+    > tr {
+      > td {
+        padding: @padding-td-th;
+      }
     }
   }
 
   > tfoot {
     > tr {
       > td {
-        border-top: solid 3px #000
+        border-top: solid 3px #000;
+        padding: @padding-td-th;
       }
     }
   }
