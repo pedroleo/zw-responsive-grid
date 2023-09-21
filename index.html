@@ -25,6 +25,27 @@
 		overflow-x: scroll;
 
 	}
+
+	ul.pagination {
+		list-style: none;
+		display: flex;
+		grid-gap: .5em;
+		padding: 0;
+		margin: 0;
+	}
+
+	ul.pagination li a {
+		display: block;
+		border: solid 1px #4c6778;
+		padding: .3em .5em;
+		background-color: #fff;
+		font-size: .7em;
+		text-decoration: none;
+		color: black;
+		text-align: center;
+
+	}
+
 </style>
 <body>
 
@@ -77,24 +98,19 @@
   <thead>
   <tr>
 	  <td>
-		  <!--<table>
-		  	<thead></thead>
-		  	<tbody>
-				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
-					<td>7</td>
-					<td>8</td>
-					<td>9</td>
-					<td>10</td>
-		  		</tr>
-			</tbody>
-		  	<tfoot></tfoot>
-		  </table>-->
+		  <ul class="pagination">
+		  	<li><a href="">1</a></li>
+		  	<li><a href="">2</a></li>
+		  	<li><a href="">3</a></li>
+		  	<li><a href="">4</a></li>
+		  	<li><a href="">5</a></li>
+		  	<li><a href="">6</a></li>
+		  	<li><a href="">7</a></li>
+		  	<li><a href="">8</a></li>
+		  	<li><a href="">9</a></li>
+		  	<li><a href="">10</a></li>
+		  	<li><a href="">11</a></li>
+		  	</ul>
 	  </td>
   </tr>
     <tr>
@@ -195,6 +211,28 @@
 <h3>Last column fixed</h3>
 <table class="zw-rgrid" id="table-example-2" style="width: 100%; text-align: left">
   <thead>
+  <tr>
+	  <td>
+		  <table>
+			  <thead></thead>
+			  <tbody>
+			  	<tr>
+		  			<td>1</td>
+		  			<td>2</td>
+		  			<td>3</td>
+		  			<td>4</td>
+		  			<td>5</td>
+		  			<td>6</td>
+		  			<td>7</td>
+		  			<td>8</td>
+		  			<td>9</td>
+		  			<td>10</td>
+		  		</tr>
+			  </tbody>
+			  <tfoot></tfoot>
+		  </table>
+	  </td>
+  </tr>
     <tr>
       <th data-hide="true" data-pk="true">Brand</th>
       <th data-hide="true" data-pk="true">Model</th>

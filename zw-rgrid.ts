@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 // Function to process a table with class "zw-rgrid"
-function processTable(table: HTMLTableElement) {
-    const table_headers: NodeListOf<HTMLTableCellElement> = table.childNodes.querySelectorAll(" thead > tr > th");
-    const table_rows: NodeListOf<HTMLTableRowElement> = table.querySelectorAll("tbody tr");
+function processTable(table: Element) {
+
+    const tableId = table.id;
+    const table_headers: NodeListOf<HTMLTableCellElement> = table.querySelectorAll("table#" + tableId + " > thead > tr > th");
+    const table_rows: NodeListOf<HTMLTableRowElement> = table.querySelectorAll("table#" + tableId + " > tbody tr");
     let has_pk: boolean = hasPrimaryKey(table_headers);
 
     // Process each row in the table
