@@ -1,0 +1,89 @@
+/* Skin */
+table.zw-rgrid {
+  border-spacing: 0;
+}
+table.zw-rgrid > thead > th,
+table.zw-rgrid > tbody > th,
+table.zw-rgrid > tfoot > th,
+table.zw-rgrid > thead > td,
+table.zw-rgrid > tbody > td,
+table.zw-rgrid > tfoot > td {
+  padding: 0.5em;
+}
+table.zw-rgrid > thead > th {
+  border-bottom: 3px solid #000;
+}
+table.zw-rgrid > tfoot > tr > td {
+  border-top: solid 3px #000;
+}
+/* Skin */
+.zw-rgrid-header-mobile {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  /**
+   * Tabela responsiva
+   * Obra de arte!!!!
+  */
+  table.zw-rgrid > thead tr th {
+    display: none;
+  }
+  table.zw-rgrid > tbody {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.3em;
+  }
+  table.zw-rgrid > tbody tr {
+    margin: 0 0 0 0;
+    border: solid 1px #e0e0e0;
+    background-color: #FFF;
+  }
+  table.zw-rgrid > tbody tr.expanded td:after {
+    transform: rotate(180deg);
+  }
+  table.zw-rgrid > tbody tr.expanded td.zw-rgrid-detail {
+    max-height: 200px;
+    padding: 5px 10px !important;
+    border-bottom-style: solid;
+  }
+  table.zw-rgrid > tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    width: unset !important;
+    text-align: left !important;
+    padding: 5px 10px;
+  }
+  table.zw-rgrid > tbody tr td[data-th] {
+    display: flex;
+    justify-content: space-between;
+    text-align: right !important;
+  }
+  table.zw-rgrid > tbody tr td[data-th]:before {
+    display: inline-block;
+    top: 0;
+    padding-right: 5px;
+    vertical-align: top;
+    font-weight: bold;
+    flex-shrink: 0;
+    content: attr(data-th);
+  }
+  table.zw-rgrid > tbody tr td.zw-rgrid-detail {
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.3s ease;
+    padding: 0 10px !important;
+    border-style: none;
+  }
+  table.zw-rgrid > tbody tr td.zw-rgrid-header-mobile {
+    background-color: #cfcfcf;
+    border-bottom: solid 3px #4f5050;
+  }
+  table.zw-rgrid > tbody tr td.zw-rgrid-header-mobile:after {
+    content: "\f078";
+    font-family: FontAwesome, fantasy;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+}
+/*# sourceMappingURL=zw-rgrid.css.map */
