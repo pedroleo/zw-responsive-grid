@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Underscored file" pattern="file:dist/js/*.js&amp;&amp;!file:dist/js/*.min.js" />
+</component>

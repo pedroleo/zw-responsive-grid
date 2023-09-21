@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3041908a-739b-4111-b36f-74ed52ea6dc3" name="zonaweb.com.br" url="http://www.zonaweb.com.br/">
+        <fileTransfer rootFolder="/html" host="192.168.1.122" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
