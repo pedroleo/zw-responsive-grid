@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 // Function to process a table with class "zw-rgrid"
-function processTable(table: Element) {
-    const table_headers = table.querySelectorAll("thead tr th");
-    const table_rows = table.querySelectorAll("tbody tr");
-    let has_pk = hasPrimaryKey(table_headers);
+function processTable(table: HTMLTableElement) {
+    const table_headers: NodeListOf<HTMLTableCellElement> = table.childNodes.querySelectorAll(" thead > tr > th");
+    const table_rows: NodeListOf<HTMLTableRowElement> = table.querySelectorAll("tbody tr");
+    let has_pk: boolean = hasPrimaryKey(table_headers);
 
     // Process each row in the table
     table_rows.forEach((row) => {
-        const table_cells = row.querySelectorAll('td:not(.zw-rgrid-header-mobile)');
-        let PkValues = [];
+        const table_cells: NodeListOf<HTMLTableCellElement> = row.querySelectorAll('td:not(.zw-rgrid-header-mobile)');
+        let PkValues: string[];
 
         if (has_pk) {
             PkValues = extractPrimaryKeyValues(table_headers, table_cells);
@@ -41,7 +41,7 @@ function hasPrimaryKey(table_headers: NodeListOf<Element>) {
 }
 
 // Function to extract primary key values from the table
-function extractPrimaryKeyValues(table_headers: NodeListOf<Element>, table_cells: string | any[] | NodeListOf<Element>) {
+function extractPrimaryKeyValues(table_headers: NodeListOf<HTMLTableCellElement>, table_cells: string | any[] | NodeListOf<Element>) {
     return Array.from(table_headers).reduce((values: any[], obj: {
         dataset: { pk: any; };
     }, index: string | number) => {
