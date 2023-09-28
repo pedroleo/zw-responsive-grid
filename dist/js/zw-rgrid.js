@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 // Function to process a table with class "zw-rgrid"
 function processTable(table) {
-    var tableId = table.id;
-    var table_headers = table.querySelectorAll("table#" + tableId + " > thead > tr > th");
-    var table_rows = table.querySelectorAll("table#" + tableId + " > tbody tr");
-    var has_pk = hasPrimaryKey(table_headers);
+    const tableId = table.id;
+    const table_headers = table.querySelectorAll("table#" + tableId + " > thead > tr > th");
+    const table_rows = table.querySelectorAll("table#" + tableId + " > tbody tr");
+    let has_pk = hasPrimaryKey(table_headers);
     // Process each row in the table
-    table_rows.forEach(function (row) {
-        var table_cells = row.querySelectorAll('td:not(.zw-rgrid-header-mobile)');
-        var PkValues;
+    table_rows.forEach((row) => {
+        const table_cells = row.querySelectorAll('td:not(.zw-rgrid-header-mobile)');
+        let PkValues;
         if (has_pk) {
             PkValues = extractPrimaryKeyValues(table_headers, table_cells);
             // Insert a mobile header cell with concatenated primary key values
@@ -31,11 +31,11 @@ function processTable(table) {
 }
 // Function to check if there is a primary key column in the table headers
 function hasPrimaryKey(table_headers) {
-    return Array.from(table_headers).some(function (obj) { return obj.dataset.pk; });
+    return Array.from(table_headers).some((obj) => obj.dataset.pk);
 }
 // Function to extract primary key values from the table
 function extractPrimaryKeyValues(table_headers, table_cells) {
-    return Array.from(table_headers).reduce(function (values, obj, index) {
+    return Array.from(table_headers).reduce((values, obj, index) => {
         if (obj.dataset.pk && table_cells.length > 0) {
             values.push(table_cells[index].innerText);
         }
@@ -44,20 +44,19 @@ function extractPrimaryKeyValues(table_headers, table_cells) {
 }
 // Function to insert a mobile header cell with concatenated primary key values
 function insertMobileHeaderCell(PkValues, row) {
-    var td_header_mobile = createHeaderMobile(PkValues);
+    const td_header_mobile = createHeaderMobile(PkValues);
     row.insertBefore(td_header_mobile, row.querySelector('td:not(.zw-rgrid-header-mobile)'));
 }
 // Function to create a mobile header cell with concatenated primary key values
 function createHeaderMobile(strPkValue) {
-    var td_header_mobile = document.createElement("td");
+    const td_header_mobile = document.createElement("td");
     td_header_mobile.classList.add('zw-rgrid-header-mobile');
     td_header_mobile.innerText = strPkValue.join(", ");
     return td_header_mobile;
 }
 // Function to set "data-th" attribute and add "zw-rgrid-detail" class for certain cells
-function setAttributesAndClasses(_a) {
-    var table_cells = _a.table_cells, table_headers = _a.table_headers;
-    Array.from(table_cells).forEach(function (cell, index) {
+function setAttributesAndClasses({ table_cells, table_headers }) {
+    Array.from(table_cells).forEach((cell, index) => {
         cell.setAttribute("data-th", table_headers[index].innerText);
         if (table_headers[index].dataset.hide) {
             cell.classList.add('zw-rgrid-detail');

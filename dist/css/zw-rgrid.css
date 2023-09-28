@@ -80,6 +80,8 @@ table.zw-rgrid > tfoot > tr > td {
   table.zw-rgrid > tbody tr td.zw-rgrid-header-mobile {
     background-color: #cfcfcf;
     border-bottom: solid 3px #4f5050;
+    cursor: default;
+    user-select: none;
   }
   table.zw-rgrid > tbody tr td.zw-rgrid-header-mobile:after {
     content: "\f078";

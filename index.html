@@ -114,119 +114,217 @@
 </pre>
 <p>You can hide all the columns content to the expandable area, as the example bellow. Or you can fix some columns to be always visible. To make some columns fixed, just don`t use data-hide in that column. It`s better that fixed columns stay on the end of table, otherwise a weird behavior is shown. Here is where we use Vanilla JS, to control show/hide detailed data.</p>
 
+<p>You must use full semantic html table structure, with thead, tbody and tfoot areas. And, each table need a unique id. so....</p>
+<pre><code>
+&lt;table <span id="table1" style="font-weight: bold; color: #bf002d">class="zw-rgrid"</span> id="uniqueId"&gt;
+  &lt;thead&gt;
+    ...
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    ...
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    ...
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+
+
 <h3>All detail in expandable area</h3>
-<table class="zw-rgrid" id="table-example-1" style="width: 100%; text-align: left">
-  <thead>
-  <tr>
-	  <td colspan="8">
-		  <ul class="pagination">
-		  	<li><a href="">1</a></li>
-		  	<li><a href="">2</a></li>
-		  	<li><a href="">3</a></li>
-		  	<li><a href="">4</a></li>
-		  	<li><a href="">5</a></li>
-		  	<li><a href="">6</a></li>
-		  	<li><a href="">7</a></li>
-		  	<li><a href="">8</a></li>
-		  	<li><a href="">9</a></li>
-		  	<li><a href="">10</a></li>
-		  	<li><a href="">11</a></li>
-		  	</ul>
-	  </td>
-  </tr>
-    <tr>
-      <th data-hide="true" data-pk="true">Brand</th>
-      <th data-hide="true" data-pk="true">Model</th>
-      <th data-hide="true">Year</th>
-      <th data-hide="true">Price</th>
-      <th data-hide="true">Engine</th>
-      <th data-hide="true">Doors</th>
-      <th data-hide="true">Cubic capacity</th>
-      <th data-hide="true" data-pk="true">Gear</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      	<td>Fiat</td>
-      	<td>Palio</td>
-      	<td>2023</td>
-      	<td>R$ 70.000,00</td>
-      	<td>1.0L</td>
-      	<td>4</td>
-      	<td>1.0L</td>
-      	<td>Manual</td>
-    </tr>
-    <tr>
-      	<td>Volkswagen</td>
-      	<td>Gol</td>
-      	<td>2023</td>
-      	<td>R$ 75.000,00</td>
-      	<td>1.0L</td>
-      	<td>4</td>
-      	<td>1.0L</td>
-      	<td>Manual</td>
-    </tr>
-    <tr>
-      	<td>Chevrolet</td>
-      	<td>Onix</td>
-      	<td>2023</td>
-      	<td>R$ 80.000,00</td>
-      	<td>1.0L</td>
-      	<td>4</td>
-      	<td>1.0L</td>
-      	<td>Manual</td>
-    </tr>
-    <tr>
-      	<td>Fiat</td>
-      	<td>Strada</td>
-      	<td>2023</td>
-      	<td>R$ 90.000,00</td>
-      	<td>1.4L</td>
-      	<td>4</td>
-      	<td>1.4L</td>
-      	<td>Manual</td>
-    </tr>
-    <tr>
-      	<td>Volkswagen</td>
-      	<td>Gol</td>
-      	<td>2023</td>
-      	<td>R$ 85.000,00</td>
-      	<td>1.0L</td>
-      	<td>4</td>
-      	<td>1.0L</td>
-      	<td>Automático</td>
-    </tr>
-    <tr>
-      	<td>Chevrolet</td>
-      	<td>Onix</td>
-      	<td>2023</td>
-      	<td>R$ 95.000,00</td>
-      	<td>1.0L</td>
-      	<td>4</td>
-      	<td>1.0L</td>
-      	<td>Automático</td>
-    </tr>
-    <tr>
-      	<td>Fiat</td>
-      	<td>Argo</td>
-      	<td>2023</td>
-      	<td>R$ 100.000,00</td>
-      	<td>1.3L</td>
-      	<td>4</td>
-      	<td>1.3L</td>
-      	<td>Manual</td>
-    </tr>
-    <tr>
-      	<td>Volkswagen</td>
-      	<td>Volkswagen Polo</td>
-      	<td>2023</td>
-      	<td>R$ 105.000,00</td>
-      	<td>1.3L</td>
-      	<td>4</td>
-      	<td>1.3L</td>
-      	<td>Manual</td>
-    </tr>
-  </tbody>
+
+<table class="zw-rgrid" data-cols="10" id="table-example-1">
+<caption>Animals</caption>
+	<thead>
+		<tr>
+			<td colspan="8">
+				<ul class="pagination">
+					<li><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a href="">5</a></li>
+					<li><a href="">6</a></li>
+					<li><a href="">7</a></li>
+					<li><a href="">8</a></li>
+					<li><a href="">9</a></li>
+					<li><a href="">10</a></li>
+					<li><a href="">11</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th data-hide="true" data-pk="true">Animal</th>
+			<th data-hide="true">Class</th>
+			<th data-hide="true">Order</th>
+			<th data-hide="true">Family</th>
+			<th data-hide="true">Genus</th>
+			<th data-hide="true">Species</th>
+			<th data-hide="true">Habitat</th>
+			<th data-hide="true">Diet</th>
+			<th data-hide="true" data-pk="true">Conservation Status</th>
+			<th data-hide="true">Life Expectancy</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Lion</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Panthera</td>
+			<td>P. leo</td>
+			<td>African Savannah</td>
+			<td>Carnivore</td>
+			<td>Vulnerable</td>
+			<td>10-14 years (in the wild)</td>
+		</tr>
+		<tr>
+			<td>Tiger</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Panthera</td>
+			<td>P. tigris</td>
+			<td>Asian Forests</td>
+			<td>Carnivore</td>
+			<td>Endangered</td>
+			<td>10-15 years (in the wild)</td>
+		</tr>
+		<tr>
+			<td>African Elephant</td>
+			<td>Mammalia</td>
+			<td>Proboscidea</td>
+			<td>Elephantidae</td>
+			<td>Loxodonta</td>
+			<td>L. africana</td>
+			<td>African Savannah</td>
+			<td>Herbivore</td>
+			<td>Vulnerable</td>
+			<td>60-70 years (in the wild)</td>
+		</tr>
+		<tr>
+			<td>Polar Bear</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Ursidae</td>
+			<td>Ursus</td>
+			<td>U. maritimus</td>
+			<td>Arctic Polar Regions</td>
+			<td>Carnivore</td>
+			<td>Vulnerable</td>
+			<td>15-18 years (in the wild)</td>
+		</tr>
+		<tr>
+			<td>Lynx</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Lynx</td>
+			<td>L. canadensis</td>
+			<td>Forests, mountains</td>
+			<td>Carnivore</td>
+			<td>Least Concern</td>
+			<td>14 years (wild)</td>
+		</tr>
+		<tr>
+			<td>Guinea Pig</td>
+			<td>Mammalia</td>
+			<td>Rodentia</td>
+			<td>Caviidae</td>
+			<td>Cavia</td>
+			<td>C. porcellus</td>
+			<td>Andes of South America</td>
+			<td>Herbs and grasses of montane meadows</td>
+			<td>Domesticated</td>
+			<td>5-6 years</td>
+		</tr>
+		<tr>
+			<td>Jaguar</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Panthera</td>
+			<td>P. onca</td>
+			<td>Forests, Grasslands</td>
+			<td>Carnivore</td>
+			<td>Not specified</td>
+			<td>Not specified</td>
+		</tr>
+		<tr>
+			<td>Cat</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Felis</td>
+			<td>F. catus</td>
+			<td>Worldwide</td>
+			<td>Carnivore</td>
+			<td>Domesticated</td>
+			<td>15 years (average)</td>
+		</tr>
+		<tr>
+			<td>Hamster</td>
+			<td>Mammalia</td>
+			<td>Rodentia</td>
+			<td>Cricetidae</td>
+			<td>Various</td>
+			<td>Various</td>
+			<td>Deserts, fields, meadows</td>
+			<td>Omnivore</td>
+			<td>Least Concern (wild species)</td>
+			<td>2-3 years (domesticated)</td>
+		</tr>
+		<tr>
+			<td>Cheetah</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Felidae</td>
+			<td>Acinonyx</td>
+			<td>A. jubatus</td>
+			<td>Savannahs of Africa and Iran</td>
+			<td>Carnivore</td>
+			<td>Vulnerable</td>
+			<td>10-12 years (wild)</td>
+		</tr>
+		<tr>
+			<td>Coyote</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Canidae</td>
+			<td>Canis</td>
+			<td>C. latrans</td>
+			<td>Savannah, forests and deserts of North America</td>
+			<td>Omnivore</td>
+			<td>Least Concern</td>
+			<td>6-8 years (wild)</td>
+		</tr>
+		<tr>
+			<td>Wolf</td>
+			<td>Mammalia</td>
+			<td>Carnivora</td>
+			<td>Canidae</td>
+			<td>Canis</td>
+			<td>C. lupus</td>
+			<td>Forests and meadows of the Northern Hemisphere</td>
+			<td>Carnivore</td>
+			<td>Near Threatened</td>
+			<td>6-8 years (wild)</td>
+		</tr>
+		<tr>
+			<td>Orangutan</td>
+			<td>Mammalia</td>
+			<td>Primates</td>
+			<td>Hominidae</td>
+			<td>Pongo</td>
+			<td>P. abelii, P. pygmaeus</td>
+			<td>Tropical rainforests of Borneo and Sumatra</td>
+			<td>Omnivore</td>
+			<td>Critically Endangered</td>
+			<td>N/A</td>
+		</tr>
+	</tbody>
+	<tfooter></tfooter>
+
 </table>
 
 <h3>Last column fixed</h3>
